@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'does this work',
+    date: '2029',
+    firstParagraph: `yes `,
+
+    secondParagraph: `it`,
+
+    thirdParagraph: `does`
   }
 ];
 
@@ -99,8 +108,50 @@ const data = [
     <span class='expandButton'></span>
   </div>
 
-  Hint: You will need to use createElement more than once here!
+   Hint: You will need to use createElement more than once here!
+*/
 
+const articles = document.querySelector('.articles');
+
+// data.forEach(data => {
+//   console.log('creating panel:', data.title)
+//   articles.appendChild(createCard(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+// })
+
+function createCard(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const firstContent = document.createElement('p');
+  const secondContent = document.createElement('p');
+  const thirdContent = document.createElement('p');
+  const articleButton = document.createElement('span');
+
+  article.appendChild(articleTitle)
+  article.appendChild(articleDate)
+  article.appendChild(firstContent)
+  article.appendChild(secondContent)
+  article.appendChild(thirdContent)
+  article.appendChild(articleButton)
+
+  article.classList.add('article')
+  articleDate.classList.add('date')
+  articleButton.classList.add('expandButton')
+
+  firstContent.textContent = firstParagraph
+  secondContent.textContent = secondParagraph
+  thirdContent.textContent = thirdParagraph
+  articleTitle.textContent = title
+  articleDate.textContent = date
+  articleButton.textContent = 'click this'
+
+  articleButton.addEventListener('click', event => {
+    article.classList.toggle('article-open')
+  })
+
+  return article
+/*
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
@@ -110,5 +161,13 @@ const data = [
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-
 */
+
+}
+
+data.map( (item) =>{
+  let component = createCard(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph);
+  return articles.appendChild(component)
+})
+
+

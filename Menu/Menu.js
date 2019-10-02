@@ -33,3 +33,52 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+const header = document.querySelector('.header');
+
+const button = document.querySelector(".menu-button");
+
+let hi =
+menuItems.forEach(data => {
+  data.document.createElement('li')
+})
+
+console.log(hi)
+
+function createMenu(menuItems) {
+  const menu = document.createElement('div')
+  const list = document.createElement('ul')
+  const students = document.createElement('li');
+  const faculty = document.createElement('li');
+  const whatsNew = document.createElement('li');
+  const techTrends = document.createElement('li');
+  const music = document.createElement('li');
+  const logOut = document.createElement('li');
+
+  menu.appendChild(students)
+  list.appendChild(faculty)
+  list.appendChild(whatsNew)
+  list.appendChild(techTrends)
+  list.appendChild(music)
+  list.appendChild(logOut)
+
+  menu.classList.add('menu')
+
+  students.textContent = menuItems[0]
+  faculty.textContent = menuItems[1]
+  whatsNew.textContent = menuItems[2]
+  techTrends.textContent = menuItems[3]
+  music.textContent = menuItems[4]
+  logOut.textContent = menuItems[5]
+
+  button.addEventListener('click', event => {
+    menu.classList.toggle('menu--open')
+  })
+
+  return menu
+}
+
+data.map( (item) =>{
+  let comp = createCard(item.menuItems);
+  return header.appendChild(comp)
+})
