@@ -44,10 +44,11 @@ function createMenu(array) {
 
   menu.appendChild(list)
   
-  menuItems.forEach(item => {
+  array.forEach(item => {
     const li = document.createElement('li');
     li.textContent = item
     list.appendChild(li);
+    console.log(li)
   });
 
   menu.classList.add('menu')
@@ -59,7 +60,11 @@ function createMenu(array) {
   return menu
 }
 
-menuItems.forEach(item => {
-  const comp = createMenu(item);
-  header.appendChild(comp);
-});
+// menuItems.forEach(item => {
+//   const comp = createMenu(item);
+//   header.appendChild(comp);
+//   console.log(item)
+// });
+
+const comp = createMenu(menuItems);
+header.appendChild(comp);
